@@ -1,1 +1,1 @@
-const data = 'Hello Webpacl'
+import './index.css';

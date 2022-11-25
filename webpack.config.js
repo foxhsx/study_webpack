@@ -1,11 +1,9 @@
 const { basename } = require('path');
 const htmlPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: {
-    foo: './src/foo.js',
-    bar: './src/bar.js',
-  },
+  entry: './src/main.js',
   output: {
     filename: '[name].js',
   },
@@ -13,11 +11,23 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            // options: {
+            //   publicPath: '../'
+            // }
+          }, 'css-loader']
       }
     ]
   },
-  plugins: [new htmlPlugin({ title: basename(__dirname) })],
+  plugins: [
+    new htmlPlugin({ title: basename(__dirname) }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      // chunkFilename: '[id].css'
+    })
+  ],
   optimization: {
     splitChunks: {
       chunks: 'all',

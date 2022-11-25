@@ -33,7 +33,8 @@ module.exports = {
         // slice 可以得到这样更容易让人接受的文件名 react.development.js
         return moduleFileName.slice(0, -3);
       },
-    }
+    },
+    runtimeChunk: true,
   },
   mode: 'development'
 }

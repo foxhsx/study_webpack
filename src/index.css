@@ -1,3 +1,19 @@
+@custom-media --viewport-medium (width <= 50rem);
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+:root {
+  --mainColor: #12345678;
+}
+
 body {
-  background-color: pink;
+  display: grid;
+  color: var(--mainColor);
+  font-family: system-ui;
+  overflow-wrap: break-word;
+  user-select: none;
+  backface-visibility: hidden;
+}
+
+a {
+  color: rgb(0 0 100% / 90%);
 }

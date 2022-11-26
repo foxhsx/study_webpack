@@ -1,6 +1,7 @@
 const { basename } = require('path');
 const htmlPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const postcssPresetEnv = require('postcss-preset-env');
 
 module.exports = {
   entry: './src/main.js',
@@ -12,12 +13,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            // options: {
-            //   publicPath: '../'
-            // }
-          }, 'css-loader']
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
       }
     ]
   },

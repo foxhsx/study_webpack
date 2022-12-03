@@ -5,7 +5,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    foo: './src/foo.js',
+    bar: './src/bar.js'
+  },
   output: {
     filename: '[name].js',
   },

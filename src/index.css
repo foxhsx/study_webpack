@@ -12,6 +12,7 @@ body {
   overflow-wrap: break-word;
   user-select: none;
   backface-visibility: hidden;
+  /* background: url(./assets/功能模块.png); */
 }
 
 a {

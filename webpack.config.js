@@ -62,7 +62,15 @@ module.exports = {
           'css-loader',
           'postcss-loader'
         ]
-      }
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: '[hash:10].[ext]',
+          outputPath: 'media/'
+        }
+      },
     ]
   },
   resolve: {

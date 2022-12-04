@@ -47,8 +47,7 @@ module.exports = {
           }
         },
         generator: {
-          filename: '[hash:10].[ext]',
-          outputPath: 'imgs/'
+          filename: 'imgs/[hash:10][ext]',
         }
       },
       {
@@ -67,8 +66,7 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: '[hash:10].[ext]',
-          outputPath: 'media/'
+          filename: 'media/[hash:10][ext]',
         }
       },
     ]

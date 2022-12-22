@@ -2,7 +2,7 @@
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 :root {
-  --mainColor: #12345678;
+  --mainColor: #000;
 }
 
 @font-face {
@@ -10,7 +10,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(./font//Alimama_ShuHeiTi_Bold.woff2)
+  src: url(./font/Alimama_ShuHeiTi_Bold.woff2)
     format("woff2");
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F,
     U+FE2E-FE2F;
@@ -23,7 +23,7 @@ body {
   overflow-wrap: break-word;
   user-select: none;
   backface-visibility: hidden;
-  /* background: url(./assets/功能模块.png); */
+  background: url(../public/assets/ele.png);
   font-family: "Roboto";
 }
 

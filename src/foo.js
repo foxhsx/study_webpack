@@ -1,2 +1,7 @@
 import React from 'react';
-document.write('foo.js', React.version)
+
+const foo = () => {
+  console.log(React.version, '4')
+}
+
+export default foo;

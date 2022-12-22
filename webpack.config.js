@@ -8,12 +8,11 @@ module.exports = {
   entry: './src/main.js',
   output: {
     filename: '[name].js',
-    publicPath: 'imgs/'
   },
   plugins: [
     new HtmlPlugin({
       title: 'Webpack 学习',
-      template: './index.ejs'
+      template: './public/index.ejs',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
@@ -99,6 +98,20 @@ module.exports = {
       new CssMinimizerPlugin(),
     ],
     minimize: true
+  },
+  devServer: {
+    // 监听打包后的产物
+    // contentBase: resolve(__dirname, 'dist'), 旧版本里的写法
+    static: {
+      directory: resolve(__dirname, 'dist'),
+    },
+    // 启动 gzip 压缩
+    compress: true,
+    host: '0.0.0.0',
+    hot: true,
+    port: 3000,
+    open: true,
+    watchFiles: ['public/**/*'],
   },
   mode: 'development'
 }

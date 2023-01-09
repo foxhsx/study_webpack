@@ -1,11 +1,12 @@
-const { basename, resolve } = require('path');
+const { resolve } = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const postcssPresetEnv = require('postcss-preset-env');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.js',
   output: {
     filename: '[name].js',
   },
@@ -18,9 +19,14 @@ module.exports = {
       filename: '[name].css',
       // chunkFilename: '[id].css'
     }),
+    new VueLoaderPlugin()
   ],
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
+      },
       {
         test: /.(jpg|png|gif)$/,
         // loader: 'url-loader',
@@ -54,11 +60,24 @@ module.exports = {
         loader: 'html-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.js$/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.(css|less)$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'vue-style-loader',
+          // MiniCssExtractPlugin.loader,
           'css-loader',
-          'postcss-loader'
+          'postcss-loader',
+          'less-loader',
+          {
+            loader: 'style-resources-loader',
+            options: {
+              patterns: resolve(__dirname, 'src/styles/*.less'),
+              injector: 'append'
+            }
+          }
         ]
       },
       {
@@ -72,7 +91,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src'),
+      // 'vue$': 'vue/dist/vue.esm.js'
     }
   },
   optimization: {
@@ -110,7 +130,7 @@ module.exports = {
     host: '0.0.0.0',
     hot: true,
     port: 3000,
-    open: true,
+    // open: true,
     watchFiles: ['public/**/*'],
   },
   mode: 'development'
